@@ -7,63 +7,91 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float _speed = 10.0f;
 
-    bool _moveToDestination = false;
     Vector3 _destination;
     
     void Start()
     {
-        // 어디선가 구독신청을 하고 있을 경우 제거.
+/*        // 어디선가 구독신청을 하고 있을 경우 제거.
         Managers.Input.KeyAction -= OnKeyboard;
 
         // 제거 후 추가. ( 중복 실행 방지 )
-        Managers.Input.KeyAction += OnKeyboard;
+        Managers.Input.KeyAction += OnKeyboard;*/
 
         Managers.Input.MouseAction -= OnMouseClicked;
         Managers.Input.MouseAction += OnMouseClicked;
     }
 
-    float wait_run_ratio = 0.0f;
-    void Update()
+    public enum PlayerState
     {
-        if (_moveToDestination)
-        {
-            Vector3 direction = _destination - transform.position;
-            if (direction.magnitude < 0.0001f)
-            {
-                _moveToDestination = false;
-            }
-            else
-            {
-                // 이동 거리는 반드시 방향&크기 벡터(direction)의 크기보다 작아야 한다.
-                // 그렇지 않으면, 목적지 바로 부근에서 마구마구 왔다갔다 한다.
-                float moveDistance = Mathf.Clamp(_speed * Time.deltaTime, 0, direction.magnitude);
+        Die
+        , Moving
+        , Idle
+        /*, Channeling
+        , Jumping
+        , Falling*/
+    }
 
-                transform.position += direction.normalized * moveDistance;
-                transform.rotation = Quaternion.Slerp(
-                       transform.rotation
-                       , Quaternion.LookRotation(direction)
-                       , 20 * Time.deltaTime
-                );
-            }
-        }
+    PlayerState _state = PlayerState.Idle;
 
-        if (_moveToDestination)
+    void UpdateDie()
+    {
+        // 아무것도 못함.
+    }
+
+    void UpdateMoving()
+    {
+        Vector3 direction = _destination - transform.position;
+        if (direction.magnitude < 0.0001f)
         {
-            wait_run_ratio = Mathf.Lerp(wait_run_ratio, 1, 10.0f * Time.deltaTime);
-            Animator animator = GetComponent<Animator>();
-            animator.SetFloat("wait_run_ratio", wait_run_ratio);
-            animator.Play("WAIT_RUN");
+            _state = PlayerState.Idle;
         }
         else
         {
-            wait_run_ratio = Mathf.Lerp(wait_run_ratio, 0, 10.0f * Time.deltaTime);
-            Animator animator = GetComponent<Animator>();
-            animator.SetFloat("wait_run_ratio", wait_run_ratio);
-            animator.Play("WAIT_RUN");
+            // 이동 거리는 반드시 방향&크기 벡터(direction)의 크기보다 작아야 한다.
+            // 그렇지 않으면, 목적지 바로 부근에서 마구마구 왔다갔다 한다.
+            float moveDistance = Mathf.Clamp(_speed * Time.deltaTime, 0, direction.magnitude);
+
+            transform.position += direction.normalized * moveDistance;
+            transform.rotation = Quaternion.Slerp(
+                   transform.rotation
+                   , Quaternion.LookRotation(direction)
+                   , 20 * Time.deltaTime
+            );
+        }
+
+        // animation
+        Animator animator = GetComponent<Animator>();
+        // 현재 게임 상태에 대한 정보를 전달.
+        animator.SetFloat("speed", _speed);
+    }
+
+     void UpdateIdle()
+    {
+        // animation
+        Animator animator = GetComponent<Animator>();
+        animator.SetFloat("speed", 0);
+    }
+
+    void Update()
+    {
+        switch (_state)
+        {
+            case PlayerState.Die:
+                UpdateDie();
+                break;
+
+            case PlayerState.Moving:
+                UpdateMoving();
+                break;
+
+            case PlayerState.Idle:
+                UpdateIdle();
+                break;
         }
     }
 
-    void OnKeyboard()
+    #region not use
+/*    void OnKeyboard()
     {
         if (Input.GetKey(KeyCode.W))
         {
@@ -106,10 +134,14 @@ public class PlayerController : MonoBehaviour
         }
 
         _moveToDestination = false;
-    }
+    }*/
+    #endregion
 
     void OnMouseClicked(Define.MouseEvent evt)
     {
+        if (_state == PlayerState.Die)
+            return;
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             
         Debug.DrawRay(Camera.main.transform.position, ray.direction * 100.0f, Color.red, 1.0f);
@@ -118,7 +150,7 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 100.0f, LayerMask.GetMask("Wall")))
         {
             _destination = hit.point;
-            _moveToDestination = true;
+            _state = PlayerState.Moving;
         }
     }
 }

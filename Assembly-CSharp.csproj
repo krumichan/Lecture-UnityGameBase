@@ -56,17 +56,18 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Constrollers\CameraController.cs" />
     <Compile Include="Assets\Scripts\@Practice\UsingMyVector.cs" />
     <Compile Include="Assets\Scripts\@Practice\MyVector.cs" />
     <Compile Include="Assets\Scripts\Managers\ResourceManager.cs" />
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\Scripts\@Practice\PrefabTest.cs" />
+    <Compile Include="Assets\Scripts\Utils\Define.cs" />
     <Compile Include="Assets\Scripts\@Practice\PracticePlayerController.cs" />
     <Compile Include="Assets\Scripts\Managers\Managers.cs" />
     <Compile Include="Assets\Scripts\Constrollers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\@Practice\TestCollision.cs" />
-    <Compile Include="Assets\Scripts\Constrollers\CameraController.cs" />
-    <Compile Include="Assets\Scripts\Utils\Define.cs" />
+    <Compile Include="Assets\Scripts\@Practice\CubeEventTest.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_fuku.shader" />

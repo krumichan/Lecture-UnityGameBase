@@ -64,10 +64,20 @@
     <Compile Include="Assets\Scripts\@Practice\PrefabTest.cs" />
     <Compile Include="Assets\Scripts\Utils\Define.cs" />
     <Compile Include="Assets\Scripts\@Practice\PracticePlayerController.cs" />
+    <Compile Include="Assets\Scripts\@Practice\CubeEventTest.cs" />
     <Compile Include="Assets\Scripts\Managers\Managers.cs" />
     <Compile Include="Assets\Scripts\Constrollers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\@Practice\TestCollision.cs" />
-    <Compile Include="Assets\Scripts\@Practice\CubeEventTest.cs" />
+    <Compile Include="Assets\Scripts\UI\Popup\UI_Button.cs" />
+    <Compile Include="Assets\Scripts\Utils\Util.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_Base.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_EventHandler.cs" />
+    <Compile Include="Assets\Scripts\Utils\Extension.cs" />
+    <Compile Include="Assets\Scripts\UI\Popup\UI_Popup.cs" />
+    <Compile Include="Assets\Scripts\UI\Scene\UI_Scene.cs" />
+    <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
+    <Compile Include="Assets\Scripts\UI\Scene\UI_Inventory.cs" />
+    <Compile Include="Assets\Scripts\UI\SubItem\UI_Inventory_Item.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_fuku.shader" />
@@ -76,6 +86,7 @@
      <None Include="Assets\Resources\Art\Knight\Shader\pbrDoublesided.shader" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_hair_ds.shader" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_hada.shader" />
+     <None Include="Assets\Textures and Sprites\SF UI\Background\LICENSE.txt" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_fuku_ds.shader" />
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_eyelash_blend.shader" />
      <None Include="Assets\Resources\Prefabs\@Practice\Nested Prefab\ReadMe.txt" />
@@ -678,6 +689,9 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

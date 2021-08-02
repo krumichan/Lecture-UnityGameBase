@@ -11,14 +11,17 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
-/*        // 어디선가 구독신청을 하고 있을 경우 제거.
-        Managers.Input.KeyAction -= OnKeyboard;
+        /*        // 어디선가 구독신청을 하고 있을 경우 제거.
+                Managers.Input.KeyAction -= OnKeyboard;
 
-        // 제거 후 추가. ( 중복 실행 방지 )
-        Managers.Input.KeyAction += OnKeyboard;*/
+                // 제거 후 추가. ( 중복 실행 방지 )
+                Managers.Input.KeyAction += OnKeyboard;*/
 
         Managers.Input.MouseAction -= OnMouseClicked;
         Managers.Input.MouseAction += OnMouseClicked;
+
+        // TEMP
+        Managers.UI.ShowSceneUI<UI_Inventory>();
     }
 
     public enum PlayerState

@@ -11,6 +11,8 @@ public class GameScene : BaseScene
         SceneType = Define.Scene.Game;
 
         Managers.UI.ShowSceneUI<UI_Inventory>();
+
+        Dictionary<int, Stat> dict = Managers.Data.StatDict;
     }
 
     public override void Clear()

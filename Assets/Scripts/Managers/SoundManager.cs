@@ -41,6 +41,7 @@ public class SoundManager
     {
         if (audioClip == null)
         {
+            Debug.LogWarning("This function[void Play] require to audioClip..");
             return;
         }
 

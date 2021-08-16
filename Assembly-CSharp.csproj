@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\Constrollers\CameraController.cs" />
     <Compile Include="Assets\Scripts\UI\Scenes\UI_Scene.cs" />
     <Compile Include="Assets\Scripts\@Practice\UsingMyVector.cs" />
+    <Compile Include="Assets\Scripts\Managers\SoundManager.cs" />
     <Compile Include="Assets\Scripts\UI\Scenes\UI_Inventory.cs" />
     <Compile Include="Assets\Scripts\@Practice\MyVector.cs" />
     <Compile Include="Assets\Scripts\UI\Popup\UI_Button.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
     <Compile Include="Assets\Scripts\@Practice\PrefabTest.cs" />
     <Compile Include="Assets\Scripts\Utils\Define.cs" />
+    <Compile Include="Assets\Scripts\@Practice\TestSound.cs" />
     <Compile Include="Assets\Scripts\@Practice\PracticePlayerController.cs" />
     <Compile Include="Assets\Scripts\UI\UI_EventHandler.cs" />
     <Compile Include="Assets\Scripts\UI\UI_Base.cs" />
@@ -82,8 +84,8 @@
     <Compile Include="Assets\Scripts\Constrollers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\@Practice\TestCollision.cs" />
     <Compile Include="Assets\Scripts\UI\Popup\UI_Popup.cs" />
-    <Compile Include="Assets\Scripts\Managers\SoundManager.cs" />
-    <Compile Include="Assets\Scripts\@Practice\TestSound.cs" />
+    <Compile Include="Assets\Scripts\Managers\PoolManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\Poolable.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Resources\Art\UnityChan\Shader\Unitychan_chara_fuku.shader" />
